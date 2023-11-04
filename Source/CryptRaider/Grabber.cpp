@@ -30,12 +30,9 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	FRotator ComponentRotation = GetComponentRotation();
-	FString StringComponentRotatio = ComponentRotation.ToCompactString();
-
-	float ElapsedTime = GetWorld()->TimeSeconds;
-
-	UE_LOG(LogTemp, Display, TEXT("Elapsed Time: %f"), ElapsedTime);
+	FVector Start = GetComponentLocation();
+	FVector End = Start + GetForwardVector() * MaxGrabbingDistance;
+	DrawDebugLine(GetWorld(), Start, End, FColor::Red);
 	
 }
 
