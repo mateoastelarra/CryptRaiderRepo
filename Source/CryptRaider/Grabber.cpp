@@ -32,8 +32,13 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 
 	FVector Start = GetComponentLocation();
 	FVector End = Start + GetForwardVector() * MaxGrabbingDistance;
-	DrawDebugLine(GetWorld(), Start, End, FColor::Red);
+	DrawDebugLine(GetWorld(), Start, End, FColor::Red);		
+}
 
+void UGrabber::Grab()
+{
+	FVector Start = GetComponentLocation();
+	FVector End = Start + GetForwardVector() * MaxGrabbingDistance;
 	FCollisionShape Sphere = FCollisionShape::MakeSphere(GrabRadius);
 	FHitResult HitResult;
 	bool HasHit = GetWorld()->SweepSingleByChannel(
@@ -53,9 +58,13 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 	}
 	else
 	{
-		//UE_LOG(LogTemp, Display, TEXT("No Actor Being Hit"));
+		UE_LOG(LogTemp, Display, TEXT("No Actor Being Hit"));
 	}
-		
+}
+
+void UGrabber::Release()
+{
+	UE_LOG(LogTemp, Display, TEXT("Release Grabber"));
 }
 
 
