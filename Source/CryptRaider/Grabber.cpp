@@ -33,6 +33,29 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 	FVector Start = GetComponentLocation();
 	FVector End = Start + GetForwardVector() * MaxGrabbingDistance;
 	DrawDebugLine(GetWorld(), Start, End, FColor::Red);
+
+	FCollisionShape Sphere = FCollisionShape::MakeSphere(GrabRadius);
+	FHitResult HitResult;
+	bool HasHit = GetWorld()->SweepSingleByChannel(
+		HitResult, 
+		Start, 
+		End, 
+		FQuat::Identity, 
+		ECC_GameTraceChannel2,
+		Sphere
+	);
 	
+	if (HasHit)
+	{
+		AActor* HitActor = HitResult.GetActor();
+		FString ActorName = HitActor->GetActorNameOrLabel();
+		UE_LOG(LogTemp, Display, TEXT("Actors Name: %s"), *ActorName);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Display, TEXT("No Actor Being Hit"));
+	}
+		
 }
+
 
