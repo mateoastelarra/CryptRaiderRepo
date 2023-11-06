@@ -53,7 +53,7 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 	}
 	else
 	{
-		UE_LOG(LogTemp, Display, TEXT("No Actor Being Hit"));
+		//UE_LOG(LogTemp, Display, TEXT("No Actor Being Hit"));
 	}
 		
 }
