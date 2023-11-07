@@ -44,5 +44,8 @@ private:
 	UPROPERTY(EditAnywhere)
 	float HoldingDistance = 200;
 
+
 	UPhysicsHandleComponent* GetPhysicsHandle() const;
+
+	bool GetGrabbableInReach(FHitResult& OutHitResult) const;
 };
