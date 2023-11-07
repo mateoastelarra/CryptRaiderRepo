@@ -150,5 +150,21 @@
 			"@C:\\Users\\Ryzen\\Unreal\\CryptRaiderRepo\\.vscode\\compileCommands_CryptRaider\\CryptRaider.1.rsp"
 		],
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\Ryzen\\Unreal\\CryptRaiderRepo\\Source\\CryptRaider\\TriggerArea.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\Ryzen\\Unreal\\CryptRaiderRepo\\.vscode\\compileCommands_CryptRaider\\CryptRaider.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\Ryzen\\Unreal\\CryptRaiderRepo\\Source\\CryptRaider\\TriggerArea.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\Ryzen\\Unreal\\CryptRaiderRepo\\.vscode\\compileCommands_CryptRaider\\CryptRaider.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
 	}
 ]
