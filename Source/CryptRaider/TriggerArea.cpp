@@ -23,6 +23,20 @@ void UTriggerArea::TickComponent(float DeltaTime, ELevelTick TickType, FActorCom
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 	
+	AActor* Actor = GetAccepableActor();
+	if (Actor != nullptr)
+	{
+		UE_LOG(LogTemp, Display, TEXT("It Has Actor: %s"), *Actor->GetActorNameOrLabel())
+	}
+	else
+	{
+		UE_LOG(LogTemp, Display, TEXT("No Actor"))
+	}
+	
+}
+
+AActor* UTriggerArea::GetAccepableActor() const
+{
 	TArray<AActor*> Actors;
 	GetOverlappingActors(Actors);
 
@@ -30,9 +44,9 @@ void UTriggerArea::TickComponent(float DeltaTime, ELevelTick TickType, FActorCom
 	{
 		if (Actor->ActorHasTag(UnlockActorTag))
 		{
-			UE_LOG(LogTemp, Display, TEXT("Unlocking: %s"), *Actor->GetActorNameOrLabel());
+			return Actor;
 		}	
-	}		
-	
-}
+	}	
 
+	return nullptr;
+}

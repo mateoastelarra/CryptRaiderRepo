@@ -29,4 +29,7 @@ virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponent
 private:
 UPROPERTY(EditAnywhere)
 FName UnlockActorTag;
+
+private:
+AActor* GetAccepableActor() const;
 };
