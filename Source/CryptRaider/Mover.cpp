@@ -31,6 +31,8 @@ void UMover::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponent
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
+	FString ShouldMoveBool = ShouldMove? "True" : "False";
+	UE_LOG(LogTemp, Display, TEXT("Should Move: %s"), *ShouldMoveBool)
 	if (ShouldMove)
 	{
 		AActor* Owner = GetOwner();
@@ -41,5 +43,10 @@ void UMover::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponent
 		FVector NewPosition = FMath::VInterpConstantTo(CurrentPosition, TargetLocation, DeltaTime, Speed);
 		Owner->SetActorLocation(NewPosition);
 	}	
+}
+
+void UMover::SetShouldMove(bool move)
+{
+	ShouldMove = move;
 }
 

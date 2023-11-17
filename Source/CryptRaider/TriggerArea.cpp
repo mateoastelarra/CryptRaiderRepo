@@ -26,11 +26,23 @@ void UTriggerArea::TickComponent(float DeltaTime, ELevelTick TickType, FActorCom
 	AActor* Actor = GetAccepableActor();
 	if (Actor != nullptr)
 	{
-		UE_LOG(LogTemp, Display, TEXT("It Has Actor: %s"), *Actor->GetActorNameOrLabel())
+		
+		if (Mover != nullptr)
+		{
+			Mover->SetShouldMove(true);
+			UE_LOG(LogTemp, Display, TEXT("It Has Actor: %s and MOVER"), *Actor->GetActorNameOrLabel())
+		}
+		else
+		{
+			UE_LOG(LogTemp, Display, TEXT("It Has Actor: %s"), *Actor->GetActorNameOrLabel())
+		}
+			
 	}
 	else
 	{
 		UE_LOG(LogTemp, Display, TEXT("No Actor"))
+		if (Mover != nullptr)
+			Mover->SetShouldMove(false);
 	}
 	
 }
@@ -51,7 +63,7 @@ AActor* UTriggerArea::GetAccepableActor() const
 	return nullptr;
 }
 
-void UTriggerArea::SerMover(UMover* NewMover)
+void UTriggerArea::SetMover(UMover* NewMover)
 {
 	Mover = NewMover;
 }
