@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Mover.h"
 #include "Components/BoxComponent.h"
 #include "TriggerArea.generated.h"
 
@@ -26,10 +27,14 @@ public:
 // Called every frame
 virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+UFUNCTION(BluePrintCallable)
+void SerMover(UMover* Mover);
+
 private:
 UPROPERTY(EditAnywhere)
 FName UnlockActorTag;
 
-private:
+UMover* Mover;
+
 AActor* GetAccepableActor() const;
 };

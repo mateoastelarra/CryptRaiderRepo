@@ -50,3 +50,8 @@ AActor* UTriggerArea::GetAccepableActor() const
 
 	return nullptr;
 }
+
+void UTriggerArea::SerMover(UMover* NewMover)
+{
+	Mover = NewMover;
+}
