@@ -28,12 +28,19 @@ void UTriggerArea::TickComponent(float DeltaTime, ELevelTick TickType, FActorCom
 
 void UTriggerArea::ActivateAndDeActivateMovement()
 {
+	if (Mover == nullptr) { return; }
 	AActor* Actor = GetAccepableActor();
-	if (Actor != nullptr && Mover != nullptr)
+	if (Actor != nullptr)
 	{
+		UPrimitiveComponent* Component = Cast<UPrimitiveComponent>(Actor->GetRootComponent());
+		if (Component != nullptr)
+		{
+			Component->SetSimulatePhysics(false);
+			Actor->AttachToActor(this->GetAttachmentRootActor(), FAttachmentTransformRules::KeepWorldTransform);
+		}
 		Mover->SetShouldMove(true);	
 	}
-	else if (Mover != nullptr)
+	else
 	{
 		Mover->SetShouldMove(false);
 	}
