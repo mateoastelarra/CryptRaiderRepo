@@ -23,28 +23,20 @@ void UTriggerArea::TickComponent(float DeltaTime, ELevelTick TickType, FActorCom
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 	
+	ActivateAndDeActivateMovement();
+}
+
+void UTriggerArea::ActivateAndDeActivateMovement()
+{
 	AActor* Actor = GetAccepableActor();
-	if (Actor != nullptr)
+	if (Actor != nullptr && Mover != nullptr)
 	{
-		
-		if (Mover != nullptr)
-		{
-			Mover->SetShouldMove(true);
-			UE_LOG(LogTemp, Display, TEXT("It Has Actor: %s and MOVER"), *Actor->GetActorNameOrLabel())
-		}
-		else
-		{
-			UE_LOG(LogTemp, Display, TEXT("It Has Actor: %s"), *Actor->GetActorNameOrLabel())
-		}
-			
+		Mover->SetShouldMove(true);	
 	}
-	else
+	else if (Mover != nullptr)
 	{
-		UE_LOG(LogTemp, Display, TEXT("No Actor"))
-		if (Mover != nullptr)
-			Mover->SetShouldMove(false);
+		Mover->SetShouldMove(false);
 	}
-	
 }
 
 AActor* UTriggerArea::GetAccepableActor() const

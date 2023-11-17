@@ -30,9 +30,12 @@ void UMover::BeginPlay()
 void UMover::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+	
+	Move(DeltaTime);
+}
 
-	FString ShouldMoveBool = ShouldMove? "True" : "False";
-	UE_LOG(LogTemp, Display, TEXT("Should Move: %s"), *ShouldMoveBool)
+void UMover::Move(float DeltaTime)
+{
 	if (ShouldMove)
 	{
 		AActor* Owner = GetOwner();
@@ -42,7 +45,7 @@ void UMover::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponent
 
 		FVector NewPosition = FMath::VInterpConstantTo(CurrentPosition, TargetLocation, DeltaTime, Speed);
 		Owner->SetActorLocation(NewPosition);
-	}	
+	}
 }
 
 void UMover::SetShouldMove(bool move)

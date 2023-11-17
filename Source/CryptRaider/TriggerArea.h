@@ -37,4 +37,6 @@ FName UnlockActorTag;
 UMover* Mover;
 
 AActor* GetAccepableActor() const;
+
+void ActivateAndDeActivateMovement();
 };
