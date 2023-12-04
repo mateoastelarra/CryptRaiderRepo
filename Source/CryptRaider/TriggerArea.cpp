@@ -53,8 +53,9 @@ AActor* UTriggerArea::GetAccepableActor() const
 
 	for (AActor* Actor : Actors)
 	{
-		if (Actor->ActorHasTag(UnlockActorTag) && 
-			!Actor->ActorHasTag("Grabbed"))
+		bool HasAcceptableTag = Actor->ActorHasTag(UnlockActorTag);
+		bool IsGrabbed = Actor->ActorHasTag("Grabbed");
+		if (HasAcceptableTag && !IsGrabbed)
 		{
 			return Actor;
 		}	
