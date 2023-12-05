@@ -34,9 +34,12 @@ void UTriggerArea::ActivateAndDeActivateMovement()
 	{
 		UPrimitiveComponent* Component = Cast<UPrimitiveComponent>(Actor->GetRootComponent());
 		if (Component != nullptr)
-		{
-			Component->SetSimulatePhysics(false);
-			Actor->AttachToActor(this->GetAttachmentRootActor(), FAttachmentTransformRules::KeepWorldTransform);
+		{	
+			if (ShouldMoveTriggerObject)
+			{
+				Component->SetSimulatePhysics(false);
+				Actor->AttachToActor(this->GetAttachmentRootActor(), FAttachmentTransformRules::KeepWorldTransform);
+			}		
 		}
 		Mover->SetShouldMove(true);	
 	}

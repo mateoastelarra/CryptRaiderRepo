@@ -34,6 +34,9 @@ private:
 UPROPERTY(EditAnywhere)
 FName UnlockActorTag;
 
+UPROPERTY(EditAnywhere)
+bool ShouldMoveTriggerObject;
+
 UMover* Mover;
 
 AActor* GetAccepableActor() const;
