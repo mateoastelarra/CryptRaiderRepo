@@ -36,26 +36,18 @@ void UMover::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponent
 
 void UMover::Move(float DeltaTime)
 {
+	FVector TargetLocation = OriginalLocation;
+
 	if (ShouldMove)
 	{
-		AActor* Owner = GetOwner();
-		FVector CurrentPosition = Owner->GetActorLocation();
-		FVector TargetLocation = OriginalLocation + MoveOffset;
-		float Speed = FVector::Distance(OriginalLocation, TargetLocation) / MoveTime;
-
-		FVector NewPosition = FMath::VInterpConstantTo(CurrentPosition, TargetLocation, DeltaTime, Speed);
-		Owner->SetActorLocation(NewPosition);
+		TargetLocation = OriginalLocation + MoveOffset;
 	}
-	else
-	{
-		AActor* Owner = GetOwner();
-		FVector CurrentPosition = Owner->GetActorLocation();
-		FVector TargetLocation = OriginalLocation;
-		float Speed = FVector::Distance(CurrentPosition, TargetLocation);
 
-		FVector NewPosition = FMath::VInterpConstantTo(CurrentPosition, TargetLocation, DeltaTime, Speed);
-		Owner->SetActorLocation(NewPosition);
-	}
+	AActor* Owner = GetOwner();
+	FVector CurrentPosition = Owner->GetActorLocation();
+	float Speed = MoveOffset.Length() / MoveTime;
+	FVector NewPosition = FMath::VInterpConstantTo(CurrentPosition, TargetLocation, DeltaTime, Speed);
+	Owner->SetActorLocation(NewPosition);
 }
 
 void UMover::SetShouldMove(bool move)
