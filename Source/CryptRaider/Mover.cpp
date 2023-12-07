@@ -46,10 +46,21 @@ void UMover::Move(float DeltaTime)
 		FVector NewPosition = FMath::VInterpConstantTo(CurrentPosition, TargetLocation, DeltaTime, Speed);
 		Owner->SetActorLocation(NewPosition);
 	}
+	else
+	{
+		AActor* Owner = GetOwner();
+		FVector CurrentPosition = Owner->GetActorLocation();
+		FVector TargetLocation = OriginalLocation;
+		float Speed = FVector::Distance(CurrentPosition, TargetLocation);
+
+		FVector NewPosition = FMath::VInterpConstantTo(CurrentPosition, TargetLocation, DeltaTime, Speed);
+		Owner->SetActorLocation(NewPosition);
+	}
 }
 
 void UMover::SetShouldMove(bool move)
 {
 	ShouldMove = move;
 }
+
 

@@ -44,8 +44,8 @@ void UTriggerArea::ActivateAndDeActivateMovement()
 		Mover->SetShouldMove(true);	
 	}
 	else
-	{
-		Mover->SetShouldMove(false);
+	{	
+		Mover->SetShouldMove(false);		
 	}
 }
 
